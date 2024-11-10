@@ -1,36 +1,41 @@
 package com.example.supermarioapp;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
-import com.google.android.material.snackbar.Snackbar;
 
 /**
- * MainActivity es la pantalla principal de la aplicación de Super Mario.
- * Muestra una lista de personajes de Mario en un RecyclerView y tiene una barra de herramientas (Toolbar)
- * con un menú que permite mostrar información acerca de la aplicación.
+ * MainActivity es la actividad principal de nuestra aplicación de Super Mario.
+ * En esta clase configuramos la interfaz de usuario, incluyendo una lista de personajes de Mario
+ * que se muestra en un RecyclerView y un menú lateral que permite navegar entre opciones.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private DrawerLayout drawerLayout;
+    private ImageView iconFlag;
 
     /**
-     * Este método se llama al iniciar la actividad.
-     * Configura la interfaz de usuario, incluyendo la barra de herramientas y el RecyclerView para mostrar los personajes.
+     * Método que se ejecuta cuando la actividad se crea. Configura el contenido de la pantalla,
+     * incluyendo el toolbar, el drawer y el RecyclerView con los personajes de Mario.
      *
-     * @param savedInstanceState guarda el estado de la actividad si se reinicia después de haber sido detenida.
+     * @param savedInstanceState guarda el estado de la actividad en caso de ser destruida y recreada.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,26 +46,25 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Ajuste de diseño para que la interfaz ocupe toda la pantalla y se adapte a las barras del sistema
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        // Configuramos el DrawerLayout y el NavigationView para el menú lateral
+        drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
-        // Detectamos el idioma local del dispositivo y mostramos la bandera correspondiente en el ícono
-        String language = Locale.getDefault().getLanguage();
-        ImageView iconFlag = findViewById(R.id.icon_flag);
-        if (language.equals("es")) {
-            iconFlag.setImageResource(R.drawable.flag_sp); // Bandera de España si el idioma es español
-        } else {
-            iconFlag.setImageResource(R.drawable.flag_uk); // Bandera de Reino Unido si el idioma es otro
-        }
+        // Añadimos el icono de hamburguesa en el Toolbar para abrir y cerrar el DrawerLayout
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
-        // Mostrar mensaje de bienvenida con Snackbar
+        // Detectamos el idioma local y configuramos la bandera correspondiente en la interfaz
+        iconFlag = findViewById(R.id.icon_flag);
+        setFlagIcon();
+
+        // Mostramos un mensaje de bienvenida al cargar la lista de personajes
         Snackbar.make(findViewById(R.id.recyclerView), getString(R.string.welcome_message), Snackbar.LENGTH_LONG).show();
 
-        // Configuración de la lista de personajes para mostrar en el RecyclerView
+        // Configuramos la lista de personajes de Mario y la mostramos en el RecyclerView
         List<Personaje> personajes = Arrays.asList(
                 new Personaje("Mario", R.drawable.mario, getString(R.string.mario_description), getString(R.string.mario_abilities)),
                 new Personaje("Luigi", R.drawable.luigi, getString(R.string.luigi_description), getString(R.string.luigi_abilities)),
@@ -68,44 +72,117 @@ public class MainActivity extends AppCompatActivity {
                 new Personaje("Toad", R.drawable.toad, getString(R.string.toad_description), getString(R.string.toad_abilities))
         );
 
-        // Configuramos el RecyclerView para mostrar la lista de personajes de forma vertical
+        // Configuramos el RecyclerView con un adaptador para mostrar la lista de personajes
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        PersonajeAdapter adapter = new PersonajeAdapter(personajes, this);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(new PersonajeAdapter(personajes, this));
     }
 
     /**
-     * Crea el menú de opciones en la barra de herramientas.
+     * Configura el ícono de la bandera en función del idioma actual.
+     * Muestra la bandera de España si el idioma es español y la del Reino Unido si es inglés.
+     */
+    private void setFlagIcon() {
+        String language = Locale.getDefault().getLanguage();
+        if (language.equals("es")) {
+            iconFlag.setImageResource(R.drawable.flag_sp);
+        } else {
+            iconFlag.setImageResource(R.drawable.flag_uk);
+        }
+    }
+
+    /**
+     * Crea el menú en la barra de herramientas con la opción "Acerca de...".
      *
-     * @param menu El menú de opciones donde se agrega el ítem "Acerca de...".
-     * @return boolean Devuelve true para mostrar el menú.
+     * @param menu el menú de opciones de la actividad.
+     * @return boolean true si el menú se ha creado correctamente.
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu); // Agregamos el ítem "Acerca de..." al menú
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     /**
-     * Maneja las selecciones en el menú de opciones.
-     * Al seleccionar "Acerca de...", se muestra un cuadro de diálogo con información sobre la app.
+     * Maneja la selección de ítems en el menú de la barra de herramientas.
+     * Si el usuario selecciona "Acerca de...", muestra un cuadro de diálogo con información sobre la app.
      *
-     * @param item El ítem del menú que ha sido seleccionado.
-     * @return boolean Devuelve true si la acción fue manejada.
+     * @param item el ítem del menú que ha sido seleccionado.
+     * @return boolean true si la selección se ha manejado correctamente.
      */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_about) { // Verificamos si se seleccionó "Acerca de..."
-            // Mostramos un cuadro de diálogo con la información "Acerca de..."
+        if (item.getItemId() == R.id.action_about) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Acerca de...")
-                    .setMessage("Aplicación desarrollada por David Escolar Godinez. Versión 1.0")
+            builder.setTitle(getString(R.string.about_dialog_title))
+                    .setMessage(getString(R.string.about_dialog_message))
                     .setIcon(R.drawable.ic_launcher_foreground)
-                    .setPositiveButton("OK", (dialog, id) -> dialog.dismiss())
+                    .setPositiveButton(getString(R.string.ok_button), (dialog, id) -> dialog.dismiss())
                     .show();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Maneja las selecciones en el menú lateral (Drawer).
+     * Las opciones incluyen "Inicio" para cerrar el menú y permanecer en la pantalla principal,
+     * "Ajustes" (por implementar), e "Idioma" para cambiar el idioma y la bandera.
+     *
+     * @param item el ítem del menú seleccionado.
+     * @return boolean true si la selección se ha manejado correctamente.
+     */
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        String itemName = getResources().getResourceEntryName(itemId);
+        Log.d("MenuItem", "ID seleccionado: " + itemId + " (" + itemName + ")");
+
+       /* switch (itemId) {
+            case R.id.nav_home:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+
+            case R.id.nav_settings:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+
+            case R.id.nav_language:
+                toggleLanguage();
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            default:
+                Log.d("MenuItem", "ID no reconocido.");
+                break;
+        }
+        */
+
+        return true;
+
+
+    }
+
+    /**
+     * Alterna entre los idiomas español e inglés, y actualiza la bandera en pantalla.
+     */
+    private void toggleLanguage() {
+        String currentLanguage = Locale.getDefault().getLanguage();
+        Locale newLocale = currentLanguage.equals("es") ? Locale.ENGLISH : new Locale("es");
+        Locale.setDefault(newLocale);
+        setFlagIcon();
+    }
+
+    /**
+     * Al presionar el botón de retroceso, cierra el menú lateral si está abierto.
+     * Si no, actúa como el botón de retroceso normal.
+     */
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }
