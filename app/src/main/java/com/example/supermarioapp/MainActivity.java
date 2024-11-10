@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     /**
-     * Alterna entre los idiomas español e inglés, y actualiza la bandera en pantalla.
+     * Alternamos entre los idiomas español e inglés, y actualizamos la bandera en pantalla.
      */
     private void toggleLanguage() {
         String currentLanguage = Locale.getDefault().getLanguage();
