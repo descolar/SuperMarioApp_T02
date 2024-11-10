@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Super Mario App</string>
+    <string name="about">About...</string>
+    <string name="about_dialog_title">About...</string>
+    <string name="about_dialog_message">Application developed by David Escolar Godinez. Version 1.0</string>
+    <string name="ok_button">OK</string>
+
+    <!-- Character descriptions in English -->
+    <string name="mario_description">The main hero of the Mushroom Kingdom. Mario is very positive and always cheerful. You can recognize him by his blue overalls, red cap, and distinctive mustache.\n\nPrincess Peach considers him her trusted friend, and everyone knows him and his brother Luigi for their acts of bravery.\n\nMario excels in sports like tennis, golf, baseball, soccer, and even kart racing. He is good at every sport! Although he is a plumber by trade, he is an expert in many skills.\n\nMario uses his powerful jumping ability and a variety of power-ups to face his arch-enemy, Bowser.</string>
+    <string name="luigi_description">Mario is brother and hero of the Mushroom Kingdom. Luigi is instantly recognized by his green cap and shirt.\n\nLuigi is kind but a little nervous, especially around ghosts. However, his abilities match Mario, so when these brothers team up, there is nothing they cannot achieve.\n\nLuigi is taller and can jump higher than Mario. If you look closely, you will notice his mustache is also slightly different.</string>
+    <string name="peach_description">The beloved princess of the Mushroom Kingdom. She is extremely kind and always working to create a world where everyone can live happily together. Her famous pink dress is charming.\n\nPrincess Peach is always ready to participate in a variety of sports and also loves baking and cooking.\n\nShe and Mario are very good friends and always willing to help each other whenever they can.</string>
+    <string name="toad_description">Resident of the Mushroom Kingdom, working in service of Princess Peach. Toad has red spots on his head, although others of his kind come in a variety of colors.\n\nToad is very cheerful and loyal. He does everything he can to help Mario and Luigi in their efforts to protect the Mushroom Kingdom from Bowser, even if it means facing danger in the process.</string>
+
+    <!-- Character abilities in English -->
+    <string name="mario_abilities">High jump, brave</string>
+    <string name="luigi_abilities">High jumper and fast</string>
+    <string name="peach_abilities">Can float in the air</string>
+    <string name="toad_abilities">Fast and agile</string>
+</resources>

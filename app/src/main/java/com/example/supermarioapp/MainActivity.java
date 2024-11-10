@@ -3,6 +3,7 @@ package com.example.supermarioapp;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,13 +36,23 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        // Detecta el idioma local y muestra la bandera correspondiente
+        String language = Locale.getDefault().getLanguage();
+        ImageView iconFlag = findViewById(R.id.icon_flag);
+        if (language.equals("es")) {
+            iconFlag.setImageResource(R.drawable.sp); // Muestra bandera de España si el idioma es español
+        } else {
+            iconFlag.setImageResource(R.drawable.uk); // Muestra bandera de Reino Unido si el idioma no es español
+        }
+
         // Configuración de lista de personajes
         List<Personaje> personajes = Arrays.asList(
-                new Personaje("Mario", R.drawable.mario, "Descripción de Mario", "Habilidades de Mario"),
-                new Personaje("Luigi", R.drawable.luigi, "Descripción de Luigi", "Habilidades de Luigi"),
-                new Personaje("Peach", R.drawable.peach, "Descripción de Peach", "Habilidades de Peach"),
-                new Personaje("Toad", R.drawable.toad, "Descripción de Toad", "Habilidades de Toad")
+                new Personaje("Mario", R.drawable.mario, getString(R.string.mario_description), getString(R.string.mario_abilities)),
+                new Personaje("Luigi", R.drawable.luigi, getString(R.string.luigi_description), getString(R.string.luigi_abilities)),
+                new Personaje("Peach", R.drawable.peach, getString(R.string.peach_description), getString(R.string.peach_abilities)),
+                new Personaje("Toad", R.drawable.toad, getString(R.string.toad_description), getString(R.string.toad_abilities))
         );
+
 
         // RecyclerView con configuración de Layout y Adapter
         RecyclerView recyclerView = findViewById(R.id.recyclerView);

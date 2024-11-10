@@ -1,4 +1,19 @@
 <resources>
-    <string name="app_name">SuperMarioApp</string>
+    <string name="app_name">Super Mario App</string>
     <string name="about">Acerca de...</string>
+    <string name="about_dialog_title">Acerca de...</string>
+    <string name="about_dialog_message">Aplicación desarrollada por David Escolar Godinez. Versión 1.0</string>
+    <string name="ok_button">Aceptar</string>
+
+    <!-- Descripciones de personajes en español -->
+    <string name="mario_description">El héroe principal del Reino Champiñón. Mario es muy positivo y siempre está alegre. Lo podrás reconocer por sus overoles de color azul, su gorra roja y su característico bigote.\n\nLa princesa Peach lo considera su amigo de confianza, y todo el mundo los conoce a él y a su hermano Luigi por sus actos de valentía.\n\nMario se destaca en deportes como tenis, golf, béisbol, fútbol y hasta en las carreras de karts. ¡Es bueno en todos los deportes! Es plomero de profesión, pero la verdad es que es un experto en todos los oficios.\n\nMario utiliza su poderosa habilidad para saltar y una gran cantidad de mejoras para enfrentarse a su archienemigo, Bowser.</string>
+    <string name="luigi_description">Hermano de Mario y héroe del Reino Champiñón. Luigi es reconocido instantáneamente por su gorra y camisa de color verde.\n\nLuigi es amable, pero un poco de nervioso, especialmente si hay fantasmas por ahí. Sin embargo, sus habilidades igualan las habilidades de Mario, así que cuando estos hermanos se unen, no hay nada que no puedan lograr.\n\nLuigi es más alto y puede saltar más alto que Mario. Si pones atención, también podrás notar que la forma de su bigote también es un poco diferente.</string>
+    <string name="peach_description">La querida princesa del Reino Champiñón. Es extremadamente amable y siempre está trabajando para crear un mundo en el que todos puedan convivir juntos y felices. Su famoso vestido color rosa es encantador.\n\nLa princesa Peach siempre está lista para participar en una gran variedad de deportes, y también le encanta hornear y cocinar.\n\nElla y Mario son muy buenos amigos y siempre están dispuestos a ayudarse mutuamente cuando pueden.</string>
+    <string name="toad_description">Residente del Reino Champiñón, trabaja al servicio de la Princesa Peach. Toad tiene manchas rojas en la cabeza, aunque otros de su especie vienen en una variedad de colores.\n\nToad es muy alegre y leal. Hace todo lo posible por ayudar a Mario y a Luigi en sus esfuerzos por proteger el Reino Champiñón de Bowser, incluso si eso significa enfrentarse al peligro durante en el proceso.</string>
+
+    <!-- Habilidades de personajes en español -->
+    <string name="mario_abilities">Salta alto, valiente</string>
+    <string name="luigi_abilities">Saltador y rápido</string>
+    <string name="peach_abilities">Puede flotar en el aire</string>
+    <string name="toad_abilities">Rápido y ágil</string>
 </resources>
