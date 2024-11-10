@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background_color">#C0D8FF</color> <!-- Azul cielo suave -->
+    <color name="card_background_color">#FFEB3B</color> <!-- Amarillo brillante -->
+    <color name="text_color">#000000</color> <!-- Negro para el texto -->
+    <color name="button_color">#FFB6C1</color> <!-- Rojo suave para botones -->
+
 </resources>

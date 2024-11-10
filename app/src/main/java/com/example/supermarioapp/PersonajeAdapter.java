@@ -40,30 +40,20 @@ public class PersonajeAdapter extends RecyclerView.Adapter<PersonajeAdapter.Pers
     // Método que enlaza los datos de un personaje con su vista (CardView)
     @Override
     public void onBindViewHolder(@NonNull PersonajeViewHolder holder, int position) {
-        // Obtenemos el personaje en la posición actual de la lista
         Personaje personaje = personajes.get(position);
-
-        // Asignamos el nombre del personaje al TextView correspondiente
         holder.textViewNombre.setText(personaje.getNombre());
-
-        // Asignamos la imagen del personaje al ImageView correspondiente
         holder.imageViewPersonaje.setImageResource(personaje.getImagenResId());
 
-        // Configuramos el OnClickListener para cada CardView
         holder.itemView.setOnClickListener(v -> {
-            // Creamos un Intent para abrir PersonajeDetalleActivity
             Intent intent = new Intent(context, PersonajeDetalleActivity.class);
-
-            // Pasamos los datos del personaje seleccionados al Intent
-            intent.putExtra("nombre", personaje.getNombre()); // Pasamos el nombre del personaje
-            intent.putExtra("imagen", personaje.getImagenResId()); // Pasamos el ID de la imagen
-            intent.putExtra("descripcion", "Descripción de " + personaje.getNombre()); // Ejemplo de descripción
-            intent.putExtra("habilidades", "Habilidades de " + personaje.getNombre()); // Ejemplo de habilidades
-
-            // Iniciamos la actividad de detalles
+            intent.putExtra("nombre", personaje.getNombre());
+            intent.putExtra("imagen", personaje.getImagenResId());
+            intent.putExtra("descripcion", personaje.getDescripcion());
+            intent.putExtra("habilidades", personaje.getHabilidades());
             context.startActivity(intent);
         });
     }
+
 
 
     // Método que devuelve el número total de elementos en la lista de personajes
