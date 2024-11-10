@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#BED6FD">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        style="@style/CardStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
@@ -14,7 +14,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#EFBE29"
             android:orientation="horizontal"
             android:padding="16dp">
 
@@ -29,17 +28,13 @@
             <!-- Nombre del personaje a la derecha de la imagen, centrado verticalmente -->
             <TextView
                 android:id="@+id/textViewNombre"
+                style="@style/CharacterNameTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
                 android:gravity="center_vertical"
-                android:text="Nombre del Personaje"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textColor="#040404"
-                android:textSize="34sp" />
+                android:text="Nombre del Personaje" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 
 </LinearLayout>

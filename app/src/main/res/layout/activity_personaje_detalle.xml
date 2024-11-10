@@ -16,8 +16,8 @@
         <!-- Imagen grande del personaje -->
         <ImageView
             android:id="@+id/imageViewDetalle"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="167dp"
+            android:layout_height="167dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/mario" />
 
@@ -33,6 +33,12 @@
             android:layout_gravity="center_horizontal" />
 
         <!-- Descripción del personaje -->
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
         <TextView
             android:id="@+id/textViewDescripcion"
             android:layout_width="wrap_content"
