@@ -35,7 +35,7 @@
             android:layout_height="24dp"
             android:layout_gravity="end"
             android:layout_marginEnd="24dp"
-            android:src="@drawable/sp" />
+            android:src="@drawable/flag_sp" />
     </androidx.appcompat.widget.Toolbar>
 
     <!-- Contenido principal de la actividad -->

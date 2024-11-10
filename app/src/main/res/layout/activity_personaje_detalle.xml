@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".PersonajeDetalleActivity">
 
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        android:scaleType="centerInside"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:onClick="onBackPressed"
+        android:padding="4dp"
+        android:src="@drawable/back_arrow" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

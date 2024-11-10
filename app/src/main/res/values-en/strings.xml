@@ -16,4 +16,8 @@
     <string name="luigi_abilities">High jumper and fast</string>
     <string name="peach_abilities">Can float in the air</string>
     <string name="toad_abilities">Fast and agile</string>
+
+    <!-- System notificatios -->
+    <string name="welcome_message">Welcome to Mario\'s world</string>
+    <string name="character_selected">Character %1$s selected</string>
 </resources>

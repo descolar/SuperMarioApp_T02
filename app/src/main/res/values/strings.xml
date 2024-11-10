@@ -16,4 +16,8 @@
     <string name="luigi_abilities">Saltador y rápido</string>
     <string name="peach_abilities">Puede flotar en el aire</string>
     <string name="toad_abilities">Rápido y ágil</string>
+
+    <!-- Mensajes del sistema -->
+    <string name="welcome_message">Bienvenidos al mundo de Mario</string>
+    <string name="character_selected">Se ha seleccionado el personaje %1$s</string>
 </resources>
