@@ -1,11 +1,12 @@
 package com.example.supermarioapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import android.widget.Toast;
+import java.util.Locale;
 
 /**
  * Actividad para mostrar los detalles de un personaje seleccionado.
@@ -13,21 +14,19 @@ import android.widget.Toast;
  */
 public class PersonajeDetalleActivity extends AppCompatActivity {
 
-    /**
-     * Método llamado cuando se crea la actividad. Configura la vista y muestra los detalles
-     * del personaje que se seleccionó en la lista.
-     *
-     * @param savedInstanceState Si la actividad se está recreando después de haber sido destruida,
-     *                           este parámetro contiene los datos que previamente guardamos en onSaveInstanceState.
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Configurar el idioma de acuerdo a las preferencias guardadas
+        SharedPreferences sharedPreferences = getSharedPreferences("app_settings", MODE_PRIVATE);
+        String language = sharedPreferences.getString("language_pref", Locale.getDefault().getLanguage());
+        setLocale(language);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personaje_detalle);
 
         // Configuramos el botón de retroceso
         ImageView backButton = findViewById(R.id.back_button);
-        backButton.setOnClickListener(v -> finish()); // Termina la actividad y vuelve a la anterior
+        backButton.setOnClickListener(v -> finish());
 
         // Asignación de vistas de la interfaz
         ImageView imageViewDetalle = findViewById(R.id.imageViewDetalle);
@@ -42,10 +41,6 @@ public class PersonajeDetalleActivity extends AppCompatActivity {
         String descripcion = intent.getStringExtra("descripcion");
         String habilidades = intent.getStringExtra("habilidades");
 
-        // Mensaje Toast al seleccionar personaje
-        String mensaje = getString(R.string.character_selected, nombre);
-        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
-
         // Asignación de datos a vistas
         textViewNombreDetalle.setText(nombre);
         imageViewDetalle.setImageResource(imagenResId);
@@ -53,4 +48,16 @@ public class PersonajeDetalleActivity extends AppCompatActivity {
         textViewHabilidades.setText(habilidades);
     }
 
+    /**
+     * Cambia el idioma de la aplicación según la configuración de preferencias.
+     *
+     * @param languageCode Código del idioma (por ejemplo, "es" o "en").
+     */
+    private void setLocale(String languageCode) {
+        Locale newLocale = new Locale(languageCode);
+        Locale.setDefault(newLocale);
+        android.content.res.Configuration config = new android.content.res.Configuration();
+        config.setLocale(newLocale);
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+    }
 }

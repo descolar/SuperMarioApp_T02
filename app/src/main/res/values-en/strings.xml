@@ -24,7 +24,9 @@
     <!-- Menu Items -->
     <string name="nav_home">Home</string>
     <string name="nav_settings">Settings</string>
-    <string name="nav_language">Languaje</string>
+
+    <!-- Change Language -->
+    <string name="change_language">Switch to Spanish</string>
 
     <string name="navigation_drawer_open">Abrir menú de navegación</string>
     <string name="navigation_drawer_close">Cerrar menú de navegación</string>

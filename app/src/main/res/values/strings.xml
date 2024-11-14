@@ -22,9 +22,12 @@
     <string name="character_selected">Se ha seleccionado el personaje %1$s</string>
 
     <!-- Items del Menú -->
-    <string name="nav_home">Home</string>
+    <string name="nav_home">Inicio</string>
     <string name="nav_settings">Ajustes</string>
-    <string name="nav_language">Idioma</string>
+
+    <!-- Cambio de idioma -->
+    <string name="change_language">Cambiar a Español/Inglés</string>
+
 
     <string name="navigation_drawer_open">Abrir menú de navegación</string>
     <string name="navigation_drawer_close">Cerrar menú de navegación</string>

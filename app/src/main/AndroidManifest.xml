@@ -12,25 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
-
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
         <!-- Configuración de SplashScreen como actividad principal de lanzamiento -->
         <activity
             android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Actividad de detalles del personaje -->
+        </activity> <!-- Actividad de detalles del personaje -->
         <activity
             android:name=".PersonajeDetalleActivity"
-            android:exported="false" />
-
-        <!-- Actividad principal de la aplicación -->
+            android:exported="false" /> <!-- Actividad principal de la aplicación -->
         <activity
             android:name=".MainActivity"
             android:exported="true" />
     </application>
+
 </manifest>
