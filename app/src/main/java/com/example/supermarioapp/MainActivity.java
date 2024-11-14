@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -121,6 +122,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_about) {
+            // Crear y mostrar el diálogo de "About"
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.about_dialog_title)
+                    .setMessage(R.string.about_dialog_message)
+                    .setIcon(R.drawable.logo)
+                    .setPositiveButton(R.string.ok_button, null)
+                    .show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
