@@ -26,7 +26,7 @@ public class Personaje {
     }
 
     /**
-     * Método para obtener el nombre del personaje.
+     * Obtenemos el nombre del personaje.
      *
      * @return El nombre del personaje.
      */
@@ -35,7 +35,7 @@ public class Personaje {
     }
 
     /**
-     * Método para obtener el ID de la imagen del personaje.
+     * Obtenemos el ID de la imagen del personaje.
      *
      * @return El ID del recurso de la imagen.
      */
@@ -44,7 +44,7 @@ public class Personaje {
     }
 
     /**
-     * Método para obtener la descripción del personaje.
+     * Obtenemos la descripción del personaje.
      *
      * @return La descripción del personaje.
      */
@@ -53,7 +53,7 @@ public class Personaje {
     }
 
     /**
-     * Método para obtener las habilidades del personaje.
+     * Obtenemos las habilidades del personaje.
      *
      * @return Las habilidades especiales del personaje.
      */

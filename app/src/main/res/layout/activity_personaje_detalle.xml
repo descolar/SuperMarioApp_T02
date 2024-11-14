@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".PersonajeDetalleActivity">
 
+    <!-- Botón de retroceso para regresar a la pantalla anterior -->
     <ImageButton
         android:id="@+id/back_button"
         android:layout_width="48dp"
@@ -18,13 +19,14 @@
         android:padding="4dp"
         android:src="@drawable/back_arrow" />
 
+    <!-- Contenedor principal para el contenido en formato vertical -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Imagen grande del personaje -->
+        <!-- Imagen grande del personaje, centrada en la pantalla -->
         <ImageView
             android:id="@+id/imageViewDetalle"
             android:layout_width="167dp"
@@ -32,7 +34,7 @@
             android:layout_gravity="center_horizontal"
             android:src="@drawable/mario" />
 
-        <!-- Nombre del personaje -->
+        <!-- Nombre del personaje, centrado y en un tamaño de texto grande y negrita -->
         <TextView
             android:id="@+id/textViewNombreDetalle"
             android:layout_width="wrap_content"
@@ -43,13 +45,14 @@
             android:textStyle="bold"
             android:layout_gravity="center_horizontal" />
 
-        <!-- Descripción del personaje -->
+        <!-- Línea divisoria para separar visualmente el nombre de la descripción -->
         <View
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="?android:attr/listDivider" />
 
+        <!-- Descripción del personaje, centrada y en tamaño de texto mediano -->
         <TextView
             android:id="@+id/textViewDescripcion"
             android:layout_width="wrap_content"
@@ -59,7 +62,7 @@
             android:text="Descripción del personaje"
             android:textSize="14sp" />
 
-        <!-- Habilidades o características del personaje -->
+        <!-- Habilidades o características del personaje, centradas y en tamaño medio -->
         <TextView
             android:id="@+id/textViewHabilidades"
             android:layout_width="wrap_content"

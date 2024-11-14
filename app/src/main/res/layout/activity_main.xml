@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="Super Mario App">
+            app:title="@string/app_name">
 
             <!-- Título centrado -->
             <TextView

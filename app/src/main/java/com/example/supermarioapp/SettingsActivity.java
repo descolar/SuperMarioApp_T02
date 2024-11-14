@@ -13,35 +13,41 @@ import java.util.Locale;
  */
 public class SettingsActivity extends AppCompatActivity {
 
-    private Switch switchLanguage;
-    private SharedPreferences sharedPreferences;
+    private Switch switchLanguage; // Switch para seleccionar el idioma
+    private SharedPreferences sharedPreferences; // Preferencias para guardar el idioma seleccionado
     private static final String LANGUAGE_PREF = "language_pref"; // Clave para almacenar el idioma
 
+    /**
+     * Método que se ejecuta al crear la actividad.
+     * Configura el idioma, inicializa el Switch y gestiona el cambio de idioma.
+     *
+     * @param savedInstanceState Guarda el estado de la actividad en caso de ser destruida y recreada.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Configurar idioma de acuerdo a la preferencia del usuario o el idioma del sistema
+        // Configuramos el idioma según la preferencia del usuario o el idioma del sistema
         sharedPreferences = getSharedPreferences("app_settings", MODE_PRIVATE);
         String language = sharedPreferences.getString(LANGUAGE_PREF, Locale.getDefault().getLanguage());
         setLocale(language);
 
         setContentView(R.layout.activity_settings);
 
-        // Inicializamos el Switch y actualizamos el texto en función del idioma
+        // Inicializamos el Switch y actualizamos su estado según el idioma actual
         switchLanguage = findViewById(R.id.switch_language);
         switchLanguage.setChecked(language.equals("en"));
         switchLanguage.setText(getString(R.string.change_language));
 
-        // Cambiamos el idioma cuando el usuario active/desactive el Switch
+        // Cambiamos el idioma cuando el usuario activa o desactiva el Switch
         switchLanguage.setOnCheckedChangeListener((buttonView, isChecked) -> {
             String selectedLanguage = isChecked ? "en" : "es";
             setLanguage(selectedLanguage);
 
-            // Actualizar el texto del switch después de cambiar el idioma
+            // Actualizamos el texto del Switch después de cambiar el idioma
             switchLanguage.setText(getString(R.string.change_language));
 
-            // Reiniciar la actividad principal para aplicar el cambio en toda la aplicación
+            // Reiniciamos la actividad principal para aplicar el cambio en toda la aplicación
             restartMainActivity();
         });
     }
@@ -73,6 +79,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     /**
      * Reinicia la actividad principal para aplicar el nuevo idioma en toda la aplicación.
+     * Nos aseguramos de que el cambio sea visible en toda la interfaz.
      */
     private void restartMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);

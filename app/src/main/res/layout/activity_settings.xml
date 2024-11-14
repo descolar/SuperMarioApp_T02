@@ -5,10 +5,11 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Título que indica la sección de idioma en la configuración -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Idioma"
+        android:text="@string/title_language"
         android:textSize="18sp" />
 
     <!-- Switch para alternar entre inglés y español -->

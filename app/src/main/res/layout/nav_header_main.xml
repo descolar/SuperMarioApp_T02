@@ -6,15 +6,17 @@
     android:padding="16dp"
     android:background="?attr/colorPrimary">
 
+    <!-- Icono de la aplicación -->
     <ImageView
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:src="@drawable/ic_launcher_foreground" />
 
+    <!-- Nombre de la aplicación en texto, debajo del icono -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Super Mario App"
+        android:text="@string/app_name"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold" />

@@ -1,5 +1,8 @@
 <resources>
+    <!-- Nombre de la aplicación -->
     <string name="app_name">Super Mario App</string>
+
+    <!-- Sección de "Acerca de" en el menú y diálogo -->
     <string name="about">Acerca de...</string>
     <string name="about_dialog_title">Acerca de...</string>
     <string name="about_dialog_message">Aplicación desarrollada por David Escolar Godinez. Versión 1.0</string>
@@ -21,16 +24,18 @@
     <string name="welcome_message">Bienvenidos al mundo de Mario</string>
     <string name="character_selected">Se ha seleccionado el personaje %1$s</string>
 
-    <!-- Items del Menú -->
+    <!-- Ítems del Menú de navegación -->
     <string name="nav_home">Inicio</string>
     <string name="nav_settings">Ajustes</string>
 
-    <!-- Cambio de idioma -->
+    <!-- Título para la sección de cambio de idioma -->
+    <string name="title_language">Idioma</string>
+
+    <!-- Texto del switch para cambiar de idioma -->
     <string name="change_language">Cambiar a Inglés</string>
 
-
+    <!-- Descripciones para accesibilidad del menú de navegación -->
     <string name="navigation_drawer_open">Abrir menú de navegación</string>
     <string name="navigation_drawer_close">Cerrar menú de navegación</string>
-
 
 </resources>

@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Configurar idioma de acuerdo a la preferencia del usuario o el idioma del sistema
+        // Configuramos el idioma según las preferencias guardadas o el idioma del sistema
         sharedPreferences = getSharedPreferences("app_settings", MODE_PRIVATE);
         String language = sharedPreferences.getString("language_pref", Locale.getDefault().getLanguage());
         setLocale(language);
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Mostramos un mensaje de bienvenida en la parte inferior de la pantalla
         Snackbar.make(findViewById(R.id.recyclerView), getString(R.string.welcome_message), Snackbar.LENGTH_LONG).show();
 
-        // Configuramos la lista de personajes de Mario en el RecyclerView
+        // Creamos y configuramos la lista de personajes de Mario en el RecyclerView
         List<Personaje> personajes = Arrays.asList(
                 new Personaje("Mario", R.drawable.mario, getString(R.string.mario_description), getString(R.string.mario_abilities)),
                 new Personaje("Luigi", R.drawable.luigi, getString(R.string.luigi_description), getString(R.string.luigi_abilities)),
@@ -84,6 +85,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new PersonajeAdapter(personajes, this));
+
+        // Configuramos el manejo del botón de retroceso para que cierre el drawer si está abierto
+        handleBackPressed();
     }
 
     /**
@@ -124,6 +128,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    /**
+     * Muestra el diálogo "About" cuando se selecciona la opción en el menú de tres puntos.
+     *
+     * @param item El ítem del menú seleccionado.
+     * @return true si la opción ha sido procesada correctamente.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_about) {
@@ -142,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     /**
      * Maneja las selecciones en el menú lateral (Drawer).
      * Las opciones incluyen "Inicio" para cerrar el menú y permanecer en la pantalla principal,
-     * "Ajustes" para acceder a la pantalla de configuración, y "Idioma" para cambiar el idioma.
+     * y "Ajustes" para acceder a la pantalla de configuración.
      *
      * @param item El ítem del menú lateral seleccionado.
      * @return true si la selección se ha manejado correctamente.
@@ -164,24 +174,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     /**
-     * Al volver a la actividad, actualiza el idioma y la bandera.
+     * Configura el comportamiento del botón de retroceso para que cierre el drawer
+     * si está abierto. Si el drawer está cerrado, se ejecuta la acción de retroceso normal.
+     */
+    private void handleBackPressed() {
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START); // Cierra el drawer si está abierto
+                } else {
+                    // Llama al comportamiento predeterminado del botón de retroceso
+                    setEnabled(false); // Deshabilita este callback para evitar un ciclo infinito
+                    onBackPressed(); // Ejecuta el comportamiento predeterminado
+                }
+            }
+        });
+    }
+
+    /**
+     * Al volver a la actividad, actualiza el ícono de la bandera según el idioma.
      */
     @Override
     protected void onResume() {
         super.onResume();
         setFlagIcon();
-    }
-
-    /**
-     * Al presionar el botón de retroceso, cierra el menú lateral si está abierto.
-     * Si no, actúa como el botón de retroceso normal.
-     */
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
     }
 }

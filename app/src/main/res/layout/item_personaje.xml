@@ -5,19 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!-- Tarjeta de CardView para cada personaje -->
     <androidx.cardview.widget.CardView
         style="@style/CardStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
 
+        <!-- Contenedor horizontal para organizar imagen y nombre del personaje -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="16dp">
 
-            <!-- Imagen del personaje a la izquierda -->
+            <!-- Imagen del personaje, alineada a la izquierda y centrada verticalmente -->
             <ImageView
                 android:id="@+id/imageViewPersonaje"
                 android:layout_width="64dp"
@@ -25,7 +27,7 @@
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/mario" />
 
-            <!-- Nombre del personaje a la derecha de la imagen, centrado verticalmente -->
+            <!-- Nombre del personaje, a la derecha de la imagen y centrado verticalmente -->
             <TextView
                 android:id="@+id/textViewNombre"
                 style="@style/CharacterNameTextStyle"
@@ -33,7 +35,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
                 android:gravity="center_vertical"
-                android:text="Nombre del Personaje" />
+                android:text="" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

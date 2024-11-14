@@ -15,7 +15,7 @@ public class SplashScreen extends AppCompatActivity {
      * Método que se ejecuta al crear la actividad. Muestra la pantalla de Splash durante un tiempo definido
      * y luego redirige automáticamente a la actividad principal.
      *
-     * @param savedInstanceState guarda el estado de la actividad en caso de ser destruida y recreada.
+     * @param savedInstanceState Guarda el estado de la actividad en caso de ser destruida y recreada.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             // Inicia la actividad principal y finaliza la actividad SplashScreen
             startActivity(new Intent(SplashScreen.this, MainActivity.class));
-            finish();
+            finish(); // Termina SplashScreen para que no vuelva al presionar "atrás"
         }, splashDuration); // Tiempo de espera antes de lanzar MainActivity
     }
 }

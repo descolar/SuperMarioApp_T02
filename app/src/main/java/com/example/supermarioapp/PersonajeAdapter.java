@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
@@ -19,9 +21,9 @@ import java.util.List;
 public class PersonajeAdapter extends RecyclerView.Adapter<PersonajeAdapter.PersonajeViewHolder> {
 
     // Lista de personajes a mostrar en el RecyclerView
-    private List<Personaje> personajes;
+    private final List<Personaje> personajes;
     // Contexto de la aplicación, necesario para inflar los elementos de la lista
-    private Context context;
+    private final Context context;
 
     /**
      * Constructor del adaptador que recibe la lista de personajes y el contexto.
@@ -67,6 +69,8 @@ public class PersonajeAdapter extends RecyclerView.Adapter<PersonajeAdapter.Pers
 
         // Configuramos un listener para abrir la actividad de detalles al hacer clic
         holder.itemView.setOnClickListener(v -> {
+            Toast.makeText(context, context.getString(R.string.character_selected, personaje.getNombre()), Toast.LENGTH_SHORT).show();
+
             Intent intent = new Intent(context, PersonajeDetalleActivity.class);
             intent.putExtra("nombre", personaje.getNombre());
             intent.putExtra("imagen", personaje.getImagenResId());
@@ -89,7 +93,7 @@ public class PersonajeAdapter extends RecyclerView.Adapter<PersonajeAdapter.Pers
     /**
      * ViewHolder interno que representa y administra las vistas de cada personaje en la lista.
      */
-    public class PersonajeViewHolder extends RecyclerView.ViewHolder {
+    public static class PersonajeViewHolder extends RecyclerView.ViewHolder {
         // ImageView para mostrar la imagen del personaje
         ImageView imageViewPersonaje;
         // TextView para mostrar el nombre del personaje
