@@ -21,20 +21,27 @@ Esta aplicación Android muestra un listado de personajes de **Super Mario Bros*
 
 ## Capturas de Pantalla
 - **ScreenSplash
-  ![image](https://github.com/user-attachments/assets/a158b42e-363d-4910-98a7-7e967111eb4e)
+![Screenshot_20241116_160944](https://github.com/user-attachments/assets/373588fc-7de4-4ece-81dc-46ece2afc37a)
+
 
 - **Pantalla Principal**: Lista de personajes de Super Mario.
-- ![image](https://github.com/user-attachments/assets/e6734a7f-afae-4b3f-9a35-10b521fecb70)
+![Screenshot_20241116_161006](https://github.com/user-attachments/assets/e4ea0af8-6a82-4a8e-8a5e-3e4ac2a6f976)
+
 
 - **Menú Lateral**: Opciones de "Home" y "Settings".
-- ![image](https://github.com/user-attachments/assets/10132625-9f40-4e22-8987-6bcfb5b708c1)
+![Screenshot_20241116_161027](https://github.com/user-attachments/assets/80a2ed2b-f738-4e95-b0e3-50a34d0774cb)
+
 
 - **Pantalla de Detalles**: Información completa del personaje seleccionado.
-- ![image](https://github.com/user-attachments/assets/5f080f5b-c5c5-4c28-addb-79860acbfb5c)
+![Screenshot_20241116_161251](https://github.com/user-attachments/assets/93280aec-d353-49e7-a177-b74f3c09ce65)
+![Screenshot_20241116_161302](https://github.com/user-attachments/assets/53910929-6e7d-4ae0-aa64-495c2a27dd77)
+
 
 - **Pantalla de Ajustes**: Cambio de idioma entre español e inglés.
-- ![image](https://github.com/user-attachments/assets/03c5511e-6548-4142-84f7-acd2d1208ed7)
+![Screenshot_20241116_161033](https://github.com/user-attachments/assets/d550f7ff-a0bc-4c33-928e-f74339ae5e5b)
+
 
 - **Dialogo "Acerca de"**: Información sobre el desarrollador y la versión.
-- ![image](https://github.com/user-attachments/assets/bd0f2275-f124-4dbd-89e4-9b55312a9448)
+![Screenshot_20241116_161017](https://github.com/user-attachments/assets/b10b3e6d-ee7e-4f3e-83fd-dd11f8093832)
+
 
